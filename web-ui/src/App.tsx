@@ -1,14 +1,17 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { Navbar } from './app/components/Navigation';
+import './app/assets/fonts/index.css';
 
-function App() {
+export const App = () => {
   return (
     <div className="App">
+        <Navbar />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.tsx</code> and save to reload.
+          Hello, my sweet little Maj
         </p>
         <a
           className="App-link"
@@ -21,6 +24,4 @@ function App() {
       </header>
     </div>
   );
-}
-
-export default App;
+};
