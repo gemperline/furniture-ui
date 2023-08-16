@@ -7,8 +7,8 @@ import './app/assets/fonts/index.css';
 export const App = () => {
   return (
     <div className="App">
-        <Navbar />
       <header className="App-header">
+      <Navbar />
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Hello, my sweet little Maj

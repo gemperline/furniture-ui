@@ -5,9 +5,9 @@ import { initialState, NavigationTypes } from './navigation.redux';
 
 const selectDomain = (state: RootState) => state?.navigationMenu || initialState;
 
-export const selectNavigationStick = createSelector([selectDomain], stick => stick);
-export const selectNavigation = createSelector([selectDomain], option => option.selectedMenu);
-export const selectNavigationSubMenu = createSelector([selectDomain], option => option.selectedSubMenu);
+export const selectNavigationMenu = createSelector([selectDomain], list => list);
+// export const selectNavigation = createSelector([selectDomain], option => option.selectedMenu);
+// export const selectNavigationSubMenu = createSelector([selectDomain], option => option.selectedSubMenu);
 
 export const navigationHelpers = createSelector([selectDomain], option => {
   return {

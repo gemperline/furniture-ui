@@ -1,30 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { isNullOrUndefined } from '../../../../helpers/objectHelpers';
 
 export type NavigationTypes =
   | 'tables'
   | 'chairs'
-  | 'lighting'
-
-export type NavigationHomeTypes =
-  | 'credentialingDashboard'
-  | 'recruiterWorkDesk'
-  | 'accountManagementWorkDesk'
-  | 'credentialingWorkDesk'
-  | 'pricingWorkDesk';
-export type NavigationFacilityTypes = 'facilityOverview' | 'facilityCreateOrder' | 'facilityCreateUnit';
-export type NavigationRecentTypes = 'recentCandidate' | 'recentPlacement' | 'recentOrder' | 'recentFacility';
-export type NavigationSettingTypes = 'userManagement' | 'templateEditor';
-export type NavigationTemplateEditorTypes = 'templateEditor.clientConfirmation' | 'templateEditor.candidateContracts';
-export type NavigationAction = 'candidateDrawer' | 'facilityDrawer' | 'orderDrawer' | 'placementDrawer';
-export type NavigationSubTypes =
-  | NavigationHomeTypes
-  | NavigationFacilityTypes
-  | NavigationRecentTypes
-  | NavigationSettingTypes
-  | NavigationTemplateEditorTypes;
-export type INavigation = NavigationMenu<NavigationTypes, NavigationSubTypes, string>;
-
+  | 'lighting';
+export type INavigation = NavigationMenu<NavigationTypes, string>;
 export interface NavigationMenu<T, P, C = {}> extends NavigationOption<T> {
   tag: string;
   /** icon to use */
@@ -57,7 +37,7 @@ export interface NavigationOption<T, P = {}> {
   clickable?: boolean;
   /** custom action to perform instead of navigation */
   action?: {
-    type: NavigationAction;
+    // type: NavigationAction;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     data: any;
   };
@@ -69,8 +49,8 @@ export interface NavigationOption<T, P = {}> {
 
 export interface INavigationMenu {
   navigationMenu: INavigation[];
-  selectedMenu: INavigation | undefined;
-  selectedSubMenu?: NavigationOption<NavigationSubTypes> | NavigationOption<string>;
+  // selectedMenu: INavigation | undefined;
+  // selectedSubMenu?: NavigationOption<NavigationSubTypes> | NavigationOption<string>;
   navigationExpanded?: boolean;
 }
 
@@ -104,7 +84,7 @@ export const initialState: INavigationMenu = {
     chairsMenu,
     lightingMenu,
   ],
-  selectedMenu: tablesMenu,
+  // selectedMenu: tablesMenu,
   navigationExpanded: undefined,
 };
 
@@ -112,10 +92,10 @@ const navigationSlice = createSlice({
     name: 'navigation',
     initialState,
     reducers: {
-        // new navigation strucutre
-        expandNavigation(state, action: PayloadAction<boolean>) {
+      // new navigation structure
+      expandNavigation(state, action: PayloadAction<boolean>) {
         return { ...state, navigationExpanded: action.payload };
-        },
+      },
     }
 });
 
