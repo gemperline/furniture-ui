@@ -5,6 +5,7 @@ import { App } from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { configureAppStore } from './store/configureStore';
+import { AppRoot } from './app/AppRoot';
 
 export const store = configureAppStore();
 
@@ -14,7 +15,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <AppRoot />
     </Provider>
   </React.StrictMode>
 );
