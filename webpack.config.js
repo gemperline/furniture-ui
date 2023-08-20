@@ -9,6 +9,8 @@ const isProduction = process.env.NODE_ENV == 'production';
 
 const stylesHandler = isProduction ? MiniCssExtractPlugin.loader : 'style-loader';
 
+const NodeHmrPlugin = require('node-hmr-plugin');
+const { HotModuleReplacementPlugin } = require('webpack');
 
 
 const config = {
@@ -24,7 +26,8 @@ const config = {
         new HtmlWebpackPlugin({
             template: 'index.html',
         }),
-
+        new HotModuleReplacementPlugin(),
+        new NodeHmrPlugin(),
         // Add your plugins here
         // Learn more about plugins from https://webpack.js.org/configuration/plugins/
     ],
@@ -62,8 +65,6 @@ module.exports = () => {
         config.mode = 'production';
         
         config.plugins.push(new MiniCssExtractPlugin());
-        
-        
     } else {
         config.mode = 'development';
     }

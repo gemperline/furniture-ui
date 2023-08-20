@@ -1,14 +1,14 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { Navbar } from './app/components/Navigation';
+import { Navbar } from './app/components/Common/Navigation/Navigation';
 import './app/assets/fonts/index.css';
 
 export const App = () => {
   return (
     <div className="App">
-        <Navbar />
       <header className="App-header">
+      <Navbar />
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Hello, my sweet little Maj
