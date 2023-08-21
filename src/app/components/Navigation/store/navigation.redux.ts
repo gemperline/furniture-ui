@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export type NavigationTypes =
+  | 'home'
   | 'tables'
   | 'chairs'
   | 'lighting';
@@ -49,10 +50,18 @@ export interface NavigationOption<T, P = {}> {
 
 export interface INavigationMenu {
   navigationMenu: INavigation[];
-  // selectedMenu: INavigation | undefined;
+  selectedMenu: INavigation | undefined;
   // selectedSubMenu?: NavigationOption<NavigationSubTypes> | NavigationOption<string>;
   navigationExpanded?: boolean;
 }
+
+const homeMenuOption: INavigation = {
+  key: 'home',
+  icon: 0,
+  name: 'navMenu.home',
+  tag: 'home',
+  path: '/',
+};
 
 const tablesMenu: INavigation = {
   key: 'tables',
@@ -80,11 +89,12 @@ const chairsMenu: INavigation = {
 
 export const initialState: INavigationMenu = {
   navigationMenu: [
+    homeMenuOption,
     tablesMenu,
     chairsMenu,
     lightingMenu,
   ],
-  // selectedMenu: tablesMenu,
+  selectedMenu: homeMenuOption,
   navigationExpanded: undefined,
 };
 
@@ -95,6 +105,9 @@ const navigationSlice = createSlice({
       // new navigation structure
       expandNavigation(state, action: PayloadAction<boolean>) {
         return { ...state, navigationExpanded: action.payload };
+      },
+      setSelectedMenu(state, action: PayloadAction<INavigation | undefined>) {
+        return { ...state, selectedMenu: action.payload };
       },
     }
 });

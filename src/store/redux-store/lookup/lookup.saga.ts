@@ -29,6 +29,7 @@
   
         const payload: ILookupState = {
           navigationItems: navItemsFromDB,
+          isLoaded: true,
         };
         yield put(lookupActions.setNavigationItems(payload));
       }

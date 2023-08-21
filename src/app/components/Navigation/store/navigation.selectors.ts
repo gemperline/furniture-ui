@@ -1,5 +1,5 @@
 import { createSelector } from '@reduxjs/toolkit';
-import { RootState } from '../../../../../types';
+import { RootState } from '../../../../types';
 
 import { initialState, NavigationTypes } from './navigation.redux';
 

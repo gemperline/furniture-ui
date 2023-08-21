@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from 'tss-react/mui';
-import { Button, ClickAwayListener, Divider, Grid, IconButton, Link, List, ListItem, ListItemText, Paper, Theme } from '@mui/material';
+import { Box, Button, ClickAwayListener, Divider, Grid, IconButton, Link, List, ListItem, ListItemText, Paper, Theme } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -8,9 +8,11 @@ import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectNavigationMenu } from './store/navigation.selectors';
-import { navigationActions } from './store/navigation.redux';
+import { INavigation, navigationActions } from './store/navigation.redux';
 import { keyframes } from 'tss-react';
-import { PrivateComponent } from '../PrivateComponent/PrivateComponent';
+import { PrivateComponent } from '../Common/PrivateComponent/PrivateComponent';
+import { breadcrumbActions } from '../Common/BreadcrumbNavigation/BreadcrumbNavigation.redux';
+import { useNavigate } from 'react-router-dom';
 
 const useStyles = makeStyles<{ open: boolean }>()((theme: Theme, props) => ({
     navMenu: {
@@ -138,10 +140,11 @@ const useStyles = makeStyles<{ open: boolean }>()((theme: Theme, props) => ({
 
 export const Navbar = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [open, setOpen] = useState<boolean>(false);
     const { classes, cx } = useStyles({ open });
     const { t } = useTranslation();
-    const { navigationMenu, navigationExpanded } = useSelector(selectNavigationMenu);
+    const { navigationMenu, navigationExpanded, selectedMenu } = useSelector(selectNavigationMenu);
 
     const toggleMenuOpen = () => {
         setOpen(prev => !prev);
@@ -154,6 +157,37 @@ export const Navbar = () => {
         }
     };
 
+    const handleNavigate = item => {
+      /**Reset action to remove existing page breadcrumbs */
+      dispatch(breadcrumbActions.reset());
+      // dispatch(globalSearchActions.setDrawerData({ open: false, data: undefined }));
+      if (item.path) navigate(item.path);
+      else if (item.pushState) window.history.pushState(null, '', `${window.location.pathname}${item.pushState}`);
+    };
+    
+    const menuItemClicked = (menuItem: INavigation) => {
+      if (!menuItem.disabled) {
+        // const a = { ...expandSubMenu, [menuItem.key]: true };
+        // setExpandSubMenu(a);
+        // setNavigationExpandedByHover(false);
+        // dispatch(navigationStickActions.expandNavigation(true));
+        // dispatch(globalSearchActions.setShowPreferenceFilterDropdown(true));
+        // if (!['recentHistory', 'settings'].includes(menuItem?.key))
+        //   dispatch(navigationActions.setSelectedSubMenu(undefined));
+        if (selectedMenu?.key !== menuItem.key && !['recentHistory', 'settings'].includes(menuItem?.key))
+          dispatch(navigationActions.setSelectedMenu(menuItem));
+        if (menuItem.key === 'home') {
+          // dispatch(globalSearchActions.setSearchOptions(initialSearchAttributes));
+          // setHomePage(menuItem.path, true); // use this to set home page based on user role
+          // trackEvent({
+          //   type: 'navigation',
+          //   name: 'Home button clicked',
+          // });
+        }
+        handleNavigate(menuItem);
+      }
+    };
+    
     return (
         <>
             <ClickAwayListener onClickAway={closeMenu}>
@@ -212,6 +246,7 @@ export const Navbar = () => {
                                 index={index}
                                 open={open}
                                 navigationExpanded={navigationExpanded}
+                                menuItemClicked={menuItemClicked}
                               />
                             </PrivateComponent>
                           ))}
@@ -226,10 +261,14 @@ export const Navbar = () => {
 };
 
 const NavMenuItem = ({ open, ...props }) => {
-    const { menuItem, index, navigationExpanded } = props;
+    const { menuItem, index, navigationExpanded, menuItemClicked } = props;
     const { classes, cx } = useStyles({ open });
     const { t } = useTranslation();
   
+    const handleListItemClick = () => {
+      if (menuItem.clickable !== false) props.menuItemClicked(menuItem);
+    };
+
     return (
       <ListItem
         classes={{
@@ -244,37 +283,35 @@ const NavMenuItem = ({ open, ...props }) => {
       >
           <Grid container wrap="nowrap" style={{ marginLeft: '0px', display: 'block' }}>
             <Grid item>
-                {/* <div
+                <div
                   id={`navigation-expandable-${index}`}
-                  className={cx(classes.menuInner, classes.menuInnerCollapsed, classes.menuInnerExpanded, {
-                    [classes.menuItemSelected]: isMenuItemSelected,
-                    'navigation-expanded': navigationExpanded === true,
-                    'navigation-collapsed': navigationExpanded === false,
-                  })}
+                  // className={cx(classes.menuInner, classes.menuInnerCollapsed, classes.menuInnerExpanded, {
+                  //   [classes.menuItemSelected]: isMenuItemSelected,
+                  //   'navigation-expanded': navigationExpanded === true,
+                  //   'navigation-collapsed': navigationExpanded === false,
+                  // })}
                 >
                   <List
                     disablePadding
-                    className={classes.menuListInner}
-                    style={{
-                      color: isMenuItemSelected || isSubMenuSelected ? colors.amnPurple : 'white',
-                    }}
+                    // className={classes.menuListInner}
+                    // style={{
+                    //   color: isMenuItemSelected || isSubMenuSelected ? colors.amnPurple : 'white',
+                    // }}
                   >
                     <ListItem
-                      disabled={menuItem.disabled}
+                      // disabled={menuItem.disabled}
                       disableGutters
-                      className={cx(classes.menuItem, {
-                        [classes.menuItemClickable]: menuItem.clickable !== false,
-                      })}
-                    >*/}
+                      // className={cx(classes.menuItem, {
+                      //   [classes.menuItemClickable]: menuItem.clickable !== false,
+                      // })}
+                    >
                       <ListItemText
                         primaryTypographyProps={{ className: classes.font }}
-                        onClick={() => {
-                          if (menuItem.clickable !== false) props.menuItemClicked(menuItem);
-                        }}
+                        onClick={handleListItemClick}
                       >
                         {menuItem.tag}
                       </ListItemText>
-                     {/*</Grid> {menuItem.subMenu && (
+                      {/* {menuItem.subMenu && (
                         <Box
                           onClick={() => {
                             props.expandCollapseSubMenu(menuItem);
@@ -294,9 +331,9 @@ const NavMenuItem = ({ open, ...props }) => {
                             />
                           )}
                         </Box>
-                      )}
+                      )} */}
                     </ListItem>
-                    {menuItem.subMenu && (
+                    {/* {menuItem.subMenu && (
                       <SubMenu
                         menuItem={menuItem}
                         expandSubMenu={expandSubMenu}
@@ -306,9 +343,9 @@ const NavMenuItem = ({ open, ...props }) => {
                         subMenuItemClicked={props.subMenuItemClicked}
                         level={0}
                       />
-                    )}
+                    )} */}
                   </List>
-                </div> */}
+                </div>
             </Grid>
           </Grid>
       </ListItem>
