@@ -11,6 +11,7 @@ import { ThemeProvider, StyledEngineProvider } from '@mui/material';
 import { AxiosWrapper } from '../../utils/AxiosWrapper';
 // import { RecentHistory } from './RecentHistory';
 import CssBaseline from '@mui/material/CssBaseline';
+import { Navbar } from '../../app/components/Navigation/Navigation';
 
 export const store = configureAppStore();
 
@@ -27,6 +28,7 @@ export const AppRoot: React.FC = () => {
                         <BrowserRouter>
                             {/* <OptimizelyProvider optimizely={optimizely} userId={'all'}> */}
                             {/* <OptimizelyFeature feature="maintenance" autoUpdate> */}
+                            <Navbar />
                             <Router />      
                         </BrowserRouter>
                       </AxiosWrapper>

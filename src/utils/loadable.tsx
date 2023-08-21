@@ -1,0 +1,75 @@
+import { Box, CircularProgress, Fab } from '@mui/material';
+import React, { lazy, Suspense } from 'react';
+import logo from '../logo.svg';
+
+interface Opts {
+  fallback: React.ReactNode;
+}
+type Unpromisify<T> = T extends Promise<infer P> ? P : never;
+
+export const lazyLoad = <T extends Promise<any>, U extends React.ComponentType<any>>(
+  importFunc: () => T,
+  selectorFunc?: (s: Unpromisify<T>) => U,
+  opts: Opts = {
+    fallback: (
+      <div className="center" style={{ height: '100%' }}>
+        <Box sx={{ m: 1, position: 'relative' }}>
+          <Fab
+            disabled
+            sx={[
+              {
+                '&:hover': {
+                  cursor: 'default',
+                },
+              },
+            ]}
+          >
+            <img src={logo} alt="AMN" />
+            <CircularProgress
+              size={62}
+              thickness={2}
+              sx={{
+                position: 'absolute',
+                top: -2.5,
+                left: -2.5,
+                zIndex: 1,
+              }}
+            />
+          </Fab>
+        </Box>
+      </div>
+    ),
+  },
+) => {
+  // let lazyFactory: () => Promise<{ default: U }> = importFunc;
+  let lazyFactory: any = importFunc;
+
+  if (selectorFunc) {
+    lazyFactory = () => {
+      const pageHasAlreadyBeenForceRefreshed = JSON.parse(
+        window.localStorage.getItem('page-has-been-force-refreshed') || 'false',
+      );
+
+      return importFunc()
+        .then(module => {
+          window.localStorage.setItem('page-has-been-force-refreshed', 'false');
+          return { default: selectorFunc(module) };
+        })
+        .catch(err => {
+          if (!pageHasAlreadyBeenForceRefreshed) {
+            window.localStorage.setItem('page-has-been-force-refreshed', 'true');
+            return window.location.reload();
+          }
+          throw err;
+        });
+    };
+  }
+
+  const LazyComponent = lazy(lazyFactory);
+
+  return (props: React.ComponentProps<U>): JSX.Element => (
+    <Suspense fallback={opts.fallback!}>
+      <LazyComponent {...props} />
+    </Suspense>
+  );
+};
