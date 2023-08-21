@@ -27,7 +27,7 @@ export const AppHome: React.FC = () => {
   }, []);
 
   return (
-    <Grid className={classes.componentContainer}>
+    <Grid className={classes.componentContainer} style={{ paddingTop: '100px' }}>
         <HomePage title={'External user view'} />
     </Grid>
   );

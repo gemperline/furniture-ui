@@ -13,10 +13,11 @@ import { Navbar } from '../app/components/Navigation/Navigation';
 export const Router: React.FC = () => (
   <Routes>
     <Route path="/" element={<PrivateRoute />}>
-      <Route path="/" element={<App />} />
+      <Route path="/" element={<AppHome />} />
     </Route>
-    {/* <Route path="/" element={<App />} /> */}
-
+    {/* <Route path="/shop/tables" element={<PrivateRoute />}>
+      <Route path="/shop/tables" element={< />} />
+    </Route> */}
     {/* <Route path="/callback" element={Callback} /> */}
     {/* <Route path="/health">
       <h3>The App is Healthy</h3>
