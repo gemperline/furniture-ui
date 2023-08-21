@@ -337,7 +337,6 @@ export const GenericDialog = ({
                   {dialogTitleProps.expandable && (
                     <Grid item>
                       <IconButton
-                        // eslint-disable-next-line i18next/no-literal-string
                         title={fullScreen ? 'Standard-screen' : 'Full-screen'}
                         className={cx(classes.titleCloseButton, {
                           [classes.titleCloseButtonDark]: variant === 'white',
@@ -363,7 +362,6 @@ export const GenericDialog = ({
                   {dialogTitleProps.closeButton && (
                     <Grid item>
                       <IconButton
-                        // eslint-disable-next-line i18next/no-literal-string
                         title="Close the dialog"
                         className={cx(classes.titleCloseButton, {
                           [classes.titleCloseButtonDark]: variant === 'white',

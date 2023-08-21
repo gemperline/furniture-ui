@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { configureAppStore } from '../../store/configureStore';
 // import { GlobalStyle, theme } from 'styles/global-styles';
 import { Router } from '../Router';
-import { ThemeProvider, StyledEngineProvider } from '@mui/material';
+import { StyledEngineProvider, ThemeProvider } from '@mui/material';
 // import { GlobalDisplay } from './GlobalDisplay';
 // import { MaintenancePage } from '../../maintenance';
 // import { createInstance, OptimizelyFeature, OptimizelyProvider, setLogLevel } from '@optimizely/react-sdk';
@@ -22,6 +22,7 @@ export const AppRoot: React.FC = () => {
         <StyledEngineProvider injectFirst>
           {/* <GlobalStyle /> */}
           <CssBaseline>
+            {/* <ThemeProvider theme={theme}> */}
               <Provider store={store}>
                 <React.StrictMode>
                     <div>
@@ -38,6 +39,7 @@ export const AppRoot: React.FC = () => {
                     </div>
                 </React.StrictMode>
               </Provider>
+            {/* </ThemeProvider> */}
           </CssBaseline>
         </StyledEngineProvider>
     </>

@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/dot-notation */
 /* eslint-disable @typescript-eslint/naming-convention */
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 // import { useInjectReducer, useInjectSaga } from 'utils/redux-injectors';
 import { Portal } from '@mui/material';
 import { useTranslation } from 'react-i18next';
@@ -16,12 +15,8 @@ export const GlobalDisplayContext = React.createContext({
 
 export const GlobalDisplay = props => {
   const { t } = useTranslation();
-  const dispatch = useDispatch();
 //   useInjectReducer({ key: userSliceKey, reducer: userReducer });
 //   useInjectSaga({ key: userSliceKey, saga: userSaga });
-
-  /** Optimizely set user */
-  const isAuthenticated = true;
 
   return (
     <GlobalDisplayContext.Provider
