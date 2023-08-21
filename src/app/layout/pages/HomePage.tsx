@@ -1,6 +1,7 @@
 import { Box, Paper } from '@mui/material';
 import { makeStyles } from 'tss-react/mui';
 import React, { useState } from 'react';
+import { Header } from '../../components/Header/Header';
 // import { LayoutGrid, LayoutGridItem } from '../LayoutGrid';
 // import { CustomBackdrop } from 'app/components/Common/Backdrop/CustomBackdrop';
 
@@ -15,6 +16,10 @@ const useStyles = makeStyles()((theme) => ({
   container: {
     flexWrap: 'nowrap',
   },
+  header: {
+    width: '100%',
+    height: '360'
+  }
 }));
 
 export const HomePage = ({
@@ -28,7 +33,8 @@ export const HomePage = ({
 
   return (
     <Paper id="home-page-paper" classes={{ root: classes.root }}>
-        {'This is the HomePage content'}
+      <Header />
+      {'This is the HomePage content'}
       {/* <CustomBackdrop open={loading} /> */}
     </Paper>
   );

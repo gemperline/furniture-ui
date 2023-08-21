@@ -10,6 +10,7 @@ const isProduction = process.env.NODE_ENV == 'production';
 const stylesHandler = isProduction ? MiniCssExtractPlugin.loader : 'style-loader';
 
 const NodeHmrPlugin = require('node-hmr-plugin');
+const PrettierPlugin = require('prettier');
 const { HotModuleReplacementPlugin } = require('webpack');
 
 
@@ -28,6 +29,7 @@ const config = {
         }),
         new HotModuleReplacementPlugin(),
         new NodeHmrPlugin(),
+        new PrettierPlugin(),
         // Add your plugins here
         // Learn more about plugins from https://webpack.js.org/configuration/plugins/
     ],

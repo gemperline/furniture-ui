@@ -21,7 +21,7 @@
       "styles/*": ["src/styles/*"],
       "utils/*": ["src/utils/*"],
       "assets/*": ["src/app/assets/*"],
-      // "locales/*": ["src/locales/*"],
+      "locales/*": ["src/locales/*"],
       // "app-insights/*": ["src/app-insights/*"],
       "pages/*": ["src/pages/*"],
       "types": ["src/types"],

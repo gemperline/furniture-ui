@@ -12,6 +12,7 @@ import { AxiosWrapper } from '../../utils/AxiosWrapper';
 // import { RecentHistory } from './RecentHistory';
 import CssBaseline from '@mui/material/CssBaseline';
 import { Navbar } from '../../app/components/Navigation/Navigation';
+import { GlobalDisplay } from './GlobalDisplay';
 
 export const store = configureAppStore();
 
@@ -26,10 +27,12 @@ export const AppRoot: React.FC = () => {
                     <div>
                       <AxiosWrapper>
                         <BrowserRouter>
+                          <GlobalDisplay>
                             {/* <OptimizelyProvider optimizely={optimizely} userId={'all'}> */}
                             {/* <OptimizelyFeature feature="maintenance" autoUpdate> */}
                             <Navbar />
-                            <Router />      
+                            <Router /> 
+                          </GlobalDisplay>     
                         </BrowserRouter>
                       </AxiosWrapper>
                     </div>
