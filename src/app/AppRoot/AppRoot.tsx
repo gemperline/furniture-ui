@@ -2,10 +2,9 @@ import * as React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { configureAppStore } from '../../store/configureStore';
-// import { GlobalStyle, theme } from 'styles/global-styles';
+// import { GlobalStyle, theme } from '../../styles/global-styles';
 import { Router } from '../Router';
-import { StyledEngineProvider, ThemeProvider } from '@mui/material';
-// import { GlobalDisplay } from './GlobalDisplay';
+import { ThemeProvider, StyledEngineProvider } from '@mui/material';
 // import { MaintenancePage } from '../../maintenance';
 // import { createInstance, OptimizelyFeature, OptimizelyProvider, setLogLevel } from '@optimizely/react-sdk';
 import { AxiosWrapper } from '../../utils/AxiosWrapper';
@@ -28,12 +27,12 @@ export const AppRoot: React.FC = () => {
                     <div>
                       <AxiosWrapper>
                         <BrowserRouter>
-                          <GlobalDisplay>
+                          {/* <GlobalDisplay> */}
                             {/* <OptimizelyProvider optimizely={optimizely} userId={'all'}> */}
                             {/* <OptimizelyFeature feature="maintenance" autoUpdate> */}
                             <Navbar />
                             <Router /> 
-                          </GlobalDisplay>     
+                          {/* </GlobalDisplay>      */}
                         </BrowserRouter>
                       </AxiosWrapper>
                     </div>

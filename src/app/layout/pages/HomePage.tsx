@@ -8,7 +8,7 @@ import { Header } from '../../components/Header/Header';
 const useStyles = makeStyles()((theme) => ({
   root: {
     minHeight: 'calc(100vh - 105px)',
-    padding: '12px',
+    padding: '0px',
   },
   mainPanelRoot: {
     width: '100%',
@@ -19,7 +19,12 @@ const useStyles = makeStyles()((theme) => ({
   header: {
     width: '100%',
     height: '360'
-  }
+  },
+  headerTitle: {
+    fontWeight: 'bold',
+    fontSize: '20px',
+    padding: '24PX 0px 12px 0px',
+  },
 }));
 
 export const HomePage = ({
@@ -34,7 +39,9 @@ export const HomePage = ({
   return (
     <Paper id="home-page-paper" classes={{ root: classes.root }}>
       <Header />
-      {'This is the HomePage content'}
+      <div className={classes.headerTitle}>
+        {'Shop By Space'}
+      </div>
       {/* <CustomBackdrop open={loading} /> */}
     </Paper>
   );

@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { App } from '../App';
 // import { PageNotFound } from 'app/components/Common/PageNotFound';
 import { Layout } from './layout/Layout';
 import { PrivateRoute } from './PrivateRoute';
@@ -8,7 +7,6 @@ import { PrivateRoute } from './PrivateRoute';
 import { HomePage } from './layout/pages/HomePage';
 import { AppHomeLoadable } from './components/AppHome/AppHome.loadable';
 import { AppHome } from './components/AppHome/AppHome';
-import { Navbar } from '../app/components/Navigation/Navigation';
 
 export const Router: React.FC = () => (
   <Routes>
