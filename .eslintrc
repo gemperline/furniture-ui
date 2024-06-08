@@ -1,0 +1,11 @@
+// need to enter all other stuff from other project version
+{
+    "extends": ["eslint:recommended", "plugin:i18n-json/recommended"],
+    "rules": {
+    "i18n-json/identical-keys": [2, {
+        "filePath": {
+            "admin.json": "./src/**/*"
+        }
+    }],
+}
+}
