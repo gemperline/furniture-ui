@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import axios, { AxiosError, AxiosRequestConfig, AxiosResponse, CanceledError } from 'axios';
-// import { store } from 'app/ApplicationRoot/ApplicationRoot';
+import { store } from 'app/ApplicationRoot/ApplicationRoot';
 // import { globalActions } from 'app/ApplicationRoot/Global.redux';
 import React from 'react';
 
@@ -30,9 +30,9 @@ const handleGlobalError = status => {
 //   }
 };
 
-export const setAxiosEmployeeID = employeeID => {
-  baseAxiosInstance.defaults.headers.common.employeeID = employeeID;
-};
+// export const setAxiosEmployeeID = employeeID => {
+//   baseAxiosInstance.defaults.headers.common.employeeID = employeeID;
+// };
 
 export default baseAxiosInstance;
 

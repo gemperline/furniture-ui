@@ -2,24 +2,26 @@ import * as React from 'react';
 import { CircularProgress } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { Layout } from './layout/Layout';
-import { Route, Outlet, Navigate } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { HomePage } from './layout/pages/HomePage';
 // import { NetworkError } from './components/Common/NetworkError/NetworkError';
 
 export const PrivateRoute = ({
-  // Component,
-// //   roles = [userRoles.all],
-//   removeLayout = false,
-//   ...rest
-// }: {
-//   [x: string]: any;
-//   Component: any;
-// //   roles?: (keyof IRoles)[] | undefined;
-//   removeLayout?: boolean;
+  Component,
+  // roles = [userRoles.all],
+  removeLayout = false,
+  ...rest
+}: {
+  [x: string]: any;
+  Component: any;
+//   roles?: (keyof IRoles)[] | undefined;
+  removeLayout?: boolean;
 }) => {
   const dispatch = useDispatch();
   const authorized = true;
   return (
-    authorized ? <Outlet /> : <></>
+    <>
+    <Layout {...rest} Component={Component} />
+    </>
   );
 };

@@ -12,7 +12,7 @@ import { INavigation, navigationActions } from './store/navigation.redux';
 import { keyframes } from 'tss-react';
 import { PrivateComponent } from '../Common/PrivateComponent/PrivateComponent';
 import { breadcrumbActions } from '../Common/BreadcrumbNavigation/BreadcrumbNavigation.redux';
-import { useNavigate } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles<{ open: boolean }>()((theme: Theme, props) => ({
     navMenu: {
@@ -140,7 +140,7 @@ const useStyles = makeStyles<{ open: boolean }>()((theme: Theme, props) => ({
 
 export const Navbar = () => {
     const dispatch = useDispatch();
-    const navigate = useNavigate();
+    const history = useHistory();
     const [open, setOpen] = useState<boolean>(false);
     const { classes, cx } = useStyles({ open });
     const { t } = useTranslation();
@@ -161,7 +161,7 @@ export const Navbar = () => {
       /**Reset action to remove existing page breadcrumbs */
       dispatch(breadcrumbActions.reset());
       // dispatch(globalSearchActions.setDrawerData({ open: false, data: undefined }));
-      if (item.path) navigate(item.path);
+      if (item.path) history.push(item.path);
       else if (item.pushState) window.history.pushState(null, '', `${window.location.pathname}${item.pushState}`);
     };
     
@@ -199,7 +199,7 @@ export const Navbar = () => {
                             </IconButton>
                         </Grid>
                         <Grid className={classes.companyName}>
-                            {t('Modern Magic')}
+                            Modern Magic
                         </Grid>
                         <Grid className={classes.rightMenu}>
                             <IconButton>

@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { configureAppStore } from '../../store/configureStore';
 // import { GlobalStyle, theme } from 'styles/global-styles';
-import { Router } from '../Router';
+import { Routes } from 'app/Routes';
 import { ThemeProvider, StyledEngineProvider } from '@mui/material';
 // import { GlobalDisplay } from './GlobalDisplay';
 // import { MaintenancePage } from '../../maintenance';
@@ -11,14 +11,15 @@ import { ThemeProvider, StyledEngineProvider } from '@mui/material';
 import { AxiosWrapper } from '../../utils/AxiosWrapper';
 // import { RecentHistory } from './RecentHistory';
 import CssBaseline from '@mui/material/CssBaseline';
-import { Navbar } from '../../app/components/Navigation/Navigation';
+import { Navbar } from '../components/Navigation/Navigation';
 import { GlobalDisplay } from './GlobalDisplay';
 
-export const store = configureAppStore();
+export const { store } = configureAppStore();
 
-export const AppRoot: React.FC = () => {
+export const ApplicationRoot: React.FC = () => {
   return (
     <>
+    <div></div>
         <StyledEngineProvider injectFirst>
           {/* <GlobalStyle /> */}
           <CssBaseline>
@@ -31,7 +32,7 @@ export const AppRoot: React.FC = () => {
                             {/* <OptimizelyProvider optimizely={optimizely} userId={'all'}> */}
                             {/* <OptimizelyFeature feature="maintenance" autoUpdate> */}
                             <Navbar />
-                            <Router /> 
+                            <Routes /> 
                           </GlobalDisplay>     
                         </BrowserRouter>
                       </AxiosWrapper>

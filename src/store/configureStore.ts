@@ -58,5 +58,5 @@ export function configureAppStore() {
     });
   }
 
-  return store;
+  return { store };
 }

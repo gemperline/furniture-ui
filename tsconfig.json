@@ -22,13 +22,12 @@
       "utils/*": ["src/utils/*"],
       "assets/*": ["src/app/assets/*"],
       "locales/*": ["src/locales/*"],
-      // "app-insights/*": ["src/app-insights/*"],
       "pages/*": ["src/pages/*"],
       "types": ["src/types"],
-      "app/*": ["src/app/*"]
+      "app/*": ["src/app/*"],
+      "react": ["./node_modules/@types/react"]
     }
   },
-  "files": ["src/index.tsx", "src/logo.svg"],
-  "include": ["./src/**/*.tsx", "./src/**/*.ts", "jest.config.js", "./src/**/*.svg"],
+  "include": ["./src/**/*.tsx", "./src/**/*.ts", "jest.config.js"],
   "exclude": ["dist", "build", "./src/**/*.test.ts", "./src/**/*.test.tsx"]
 }
