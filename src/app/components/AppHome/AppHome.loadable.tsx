@@ -1,4 +1,4 @@
-import { lazyLoad } from 'src/utils/loadable';
+import { lazyLoad } from '../../../utils/loadable';
 
 export const AppHomeLoadable = lazyLoad(
   () => import('./AppHome'),

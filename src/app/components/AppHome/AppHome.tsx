@@ -3,7 +3,7 @@ import { makeStyles } from 'tss-react/mui';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { navigationActions } from '../Navigation/store/navigation.redux';
-import { HomePage } from 'src/app/layout/pages/HomePage';
+import { HomePage } from 'app/layout/pages/HomePage';
 
 const useStyles = makeStyles()({
   componentContainer: {
@@ -27,7 +27,7 @@ export const AppHome: React.FC = () => {
   }, []);
 
   return (
-    <Grid className={classes.componentContainer} style={{ paddingTop: '100px' }}>
+    <Grid className={classes.componentContainer}>
       <HomePage title={'External user view'} />
     </Grid>
   );

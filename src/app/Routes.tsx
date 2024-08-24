@@ -12,21 +12,17 @@ import { Navbar } from './components/Navigation/Navigation';
 
 export const Routes = () => {
   return (
-    <div></div>
-    // <Switch>
-      // <Route path="/" component={<PrivateRoute />}>
-      //   <Route path="/" component={<AppHome />} />
-      // </Route>
-      // {/* <Route path="/shop/tables" element={<PrivateRoute />}>
-      //   <Route path="/shop/tables" element={< />} />
-      // </Route> */}
-      // {/* <Route path="/callback" element={Callback} /> */}
-      // {/* <Route path="/health">
-      //   <h3>The App is Healthy</h3>
-      // </Route> */}
-      // {/* <Route path="/silent_renew" element={<SilentRenew />} /> */}    
-      // {/* <Layout element={PageNotFound} /> */}
-    // </Switch>
-
+    <Switch>
+      <Route exact path="/" component={() => <AppHomeLoadable />}>
+        <Route path="/" component={AppHomeLoadable} />
+        {/* <Route path="/shop/tables" /> */}
+     </Route>
+      {/* <Route path="/callback" element={Callback} /> */}
+      {/* <Route path="/health">
+        <h3>The App is Healthy</h3>
+      </Route> */}
+      {/* <Route path="/silent_renew" element={<SilentRenew />} /> */}    
+      {/* <Layout element={PageNotFound} /> */}
+    </Switch>
   )
 };

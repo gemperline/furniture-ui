@@ -91,7 +91,7 @@ export const Layout = props => {
       render={matchProps => (
         <Grid container classes={{ root: classes.root, container: classes.container }} direction="row" spacing={0}>
           <Grid item className={cx(classes.layoutStatics, classes.sideNav)} style={{ height: NAV_HEIGHT }}>
-            <Navbar />
+            {/* <Navbar /> */}
           </Grid>
           <Grid
             item
@@ -103,7 +103,7 @@ export const Layout = props => {
             }}
           >
             <Grid item className={classes.layoutStatics} style={{ width: '100%', height: `calc(100% - ${NAV_HEIGHT}px)` }}>
-              <Header />
+              <Header height="300px" />
             </Grid>
             <Grid
               item
