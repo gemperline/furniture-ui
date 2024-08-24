@@ -190,74 +190,71 @@ export const Navbar = () => {
     };
     
     return (
-        <>
-            <ClickAwayListener onClickAway={closeMenu}>
-                <Paper classes={{ root: `${classes.navMenu} ${open ? classes.drawer : classes.drawerCollapse}` }}>
-                    <Grid className={classes.navBar}>
-                        <Grid className={classes.leftMenu}>
-                            <IconButton onClick={toggleMenuOpen}>
-                                {open ? <CloseIcon className={classes.navIcon} /> : <MenuIcon className={classes.navIcon} />}
-                            </IconButton>
-                        </Grid>
-                        <Grid className={classes.companyName}>
-                            Modern Magic
-                        </Grid>
-                        <Grid className={classes.rightMenu}>
-                            <IconButton>
-                                <AccountCircleIcon className={classes.navIcon} />
-                            </IconButton>
-                            <IconButton>
-                                <ShoppingCartIcon className={ classes.navIcon } />
-                            </IconButton>
-                        </Grid>
-                    </Grid>
-                    {open && (
-                        <div
-                        style={{ overflow: 'hidden' }}
-                        className={cx({
-                          [classes.listWrapperExpanded]: navigationExpanded,
-                          [classes.listWrapperCollapsed]: !navigationExpanded,
-                        })}
-                      >
-                        <List
-                          id="global-nav-list"
-                          disablePadding
-                          className={cx(classes.menuList, {
-                            [classes.menuListExpanded]: open,
-                            [classes.menuListCollapsed]: !open,
-                          })}
-                          sx={{ overflowY: 'auto' }}
-                        //   onMouseEnter={() => {
-                        //     if (!navigationExpanded) {
-                        //       toggleMenu();
-                        //       setNavigationExpandedByHover(true);
-                        //     }
-                        //   }}
-                        //   onMouseLeave={() => {
-                        //     if (navigationExpandedByHover) {
-                        //       setNavigationExpandedByHover(false);
-                        //       closeMenu();
-                        //     }
-                        //   }}
-                        >
-                          {navigationMenu.map((menuItem, index) => (
-                            <PrivateComponent key={index}>
-                              <NavMenuItem
-                                menuItem={menuItem}
-                                index={index}
-                                open={open}
-                                navigationExpanded={navigationExpanded}
-                                menuItemClicked={menuItemClicked}
-                              />
-                            </PrivateComponent>
-                          ))}
-                        </List>
-                      </div>
-                    )}
-                </Paper>
-            </ClickAwayListener>
-            <Divider className={classes.divider} />
-        </>
+      <ClickAwayListener onClickAway={closeMenu}>
+          <Paper classes={{ root: `${classes.navMenu} ${open ? classes.drawer : classes.drawerCollapse}` }}>
+              <Grid className={classes.navBar}>
+                  <Grid className={classes.leftMenu}>
+                      <IconButton onClick={toggleMenuOpen}>
+                          {open ? <CloseIcon className={classes.navIcon} /> : <MenuIcon className={classes.navIcon} />}
+                      </IconButton>
+                  </Grid>
+                  <Grid className={classes.companyName}>
+                      Modern Magic
+                  </Grid>
+                  <Grid className={classes.rightMenu}>
+                      <IconButton>
+                          <AccountCircleIcon className={classes.navIcon} />
+                      </IconButton>
+                      <IconButton>
+                          <ShoppingCartIcon className={ classes.navIcon } />
+                      </IconButton>
+                  </Grid>
+              </Grid>
+              {open && (
+                  <div
+                  style={{ overflow: 'hidden' }}
+                  className={cx({
+                    [classes.listWrapperExpanded]: navigationExpanded,
+                    [classes.listWrapperCollapsed]: !navigationExpanded,
+                  })}
+                >
+                  <List
+                    id="global-nav-list"
+                    disablePadding
+                    className={cx(classes.menuList, {
+                      [classes.menuListExpanded]: open,
+                      [classes.menuListCollapsed]: !open,
+                    })}
+                    sx={{ overflowY: 'auto' }}
+                  //   onMouseEnter={() => {
+                  //     if (!navigationExpanded) {
+                  //       toggleMenu();
+                  //       setNavigationExpandedByHover(true);
+                  //     }
+                  //   }}
+                  //   onMouseLeave={() => {
+                  //     if (navigationExpandedByHover) {
+                  //       setNavigationExpandedByHover(false);
+                  //       closeMenu();
+                  //     }
+                  //   }}
+                  >
+                    {navigationMenu.map((menuItem, index) => (
+                      <PrivateComponent key={index}>
+                        <NavMenuItem
+                          menuItem={menuItem}
+                          index={index}
+                          open={open}
+                          navigationExpanded={navigationExpanded}
+                          menuItemClicked={menuItemClicked}
+                        />
+                      </PrivateComponent>
+                    ))}
+                  </List>
+                </div>
+              )}
+          </Paper>
+      </ClickAwayListener>
     )
 };
 
