@@ -14,7 +14,7 @@ export const Routes = () => {
   return (
     <Switch>
       <Route exact path="/" component={() => <AppHomeLoadable />}>
-        <Route path="/" component={AppHomeLoadable} />
+        {/* <Route path="/" component={AppHomeLoadable} /> */}
         {/* <Route path="/shop/tables" /> */}
      </Route>
       {/* <Route path="/callback" element={Callback} /> */}
