@@ -184,6 +184,7 @@ export const Navbar = () => {
           //   name: 'Home button clicked',
           // });
         }
+        closeMenu();
         handleNavigate(menuItem);
       }
     };
