@@ -1,9 +1,11 @@
 import React from 'react';
 
-export const Header = () => {
+export const Header = (props) => {
     return (
-        <div>
-            {'This is the header'}
-        </div>
+        <>
+            <div style={{ height: props?.height }}>
+                {'This is the header'}
+            </div>
+        </>
     );
 }

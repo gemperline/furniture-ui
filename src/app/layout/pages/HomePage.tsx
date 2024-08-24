@@ -35,6 +35,7 @@ export const HomePage = ({
     <Paper id="home-page-paper" classes={{ root: classes.root }}>
       <Header />
       {'This is the HomePage content'}
+      {/* <div style={{ height: '100vh', marginTop: 1000 }}>{'some test'} </div> */}
       {/* <CustomBackdrop open={loading} /> */}
     </Paper>
   );
