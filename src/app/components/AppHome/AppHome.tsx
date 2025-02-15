@@ -4,13 +4,13 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { navigationActions } from '../Navigation/store/navigation.redux';
 import { HomePage } from 'app/layout/pages/HomePage';
+import { Header } from '../Header/Header';
 
 const useStyles = makeStyles()({
-  componentContainer: {
+  pageContainer: {
     width: '100%',
     height: '100%',
     backgroundColor: '#f5f5f5',
-    display: 'fit-content',
   },
 });
 
@@ -27,8 +27,8 @@ export const AppHome: React.FC = () => {
   }, []);
 
   return (
-    <Grid className={classes.componentContainer}>
-      <HomePage title={'External user view'} />
+    <Grid className={classes.pageContainer}>
+        <HomePage title={'External user view'} />
     </Grid>
   );
 };

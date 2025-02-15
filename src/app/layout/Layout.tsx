@@ -14,7 +14,7 @@ import { selectNavigationMenu } from '../components/Navigation/store/navigation.
 const useStyles = makeStyles()((theme: Theme) => ({
   root: {
     backgroundColor: '#F5F5F5',
-    overflow: 'hidden',
+    overflow: 'auto',
   },
   container: {
     minHeight: '100vh',

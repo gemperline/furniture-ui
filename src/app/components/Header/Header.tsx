@@ -1,56 +1,24 @@
 import { Grid } from '@mui/material';
 import React from 'react';
 import { makeStyles } from 'tss-react/mui';
+import homeHeaderLivingRoom from '../../assets/images/homeHeaderLivingRoom.png';
 
 const useStyles = makeStyles()({
-    root: {
-      width: '100%',
-      padding: '12px 6px',
-      display: 'flex',
-      alignItems: 'center',
-      backgroundColor: 'red',
+    imageContainer: {
+        // maxWidth: '100%',
+        // display: 'block',
+        // height: 'auto',
     },
-    subRoot: {
-      width: '100%',
-    },
-    adbanner: {
-        justifyContent: 'center',
-        display: 'flex',
-    },
-    rootWarning: {
-      backgroundColor: '#FEF6EE',
-      border: '1px solid #FFA22E',
-      justifyContent:'left',
-      '& #custom-banner-text': {
-        color: '#663B01',
-      },
-    },
-    rootError: {
-      backgroundColor: '#ffd9cc',
-      '& #custom-banner-text': {
-        color: '#611a16',
-      },
-    },
-    icon: {
-      marginLeft: '6px',
-      marginRight: '12px',
-    },
-    text: {
-      fontSize: 14,
-      alignSelf: 'center',
-    },
-    action: {
-      marginLeft: '12px',
+    image: {
+        width: '100%',
     },
 });
 
 export const Header = (props) => {
     const { classes } = useStyles();
     return (
-        <Grid className={classes.root}>
-            <div style={{ height: props?.height }}>
-                {'This is the header'}
-            </div>
+        <Grid container className={classes.imageContainer}>
+            <img src={homeHeaderLivingRoom} alt="homeHeaderLivingRoom" className={classes.image} />
         </Grid>
     );
 }

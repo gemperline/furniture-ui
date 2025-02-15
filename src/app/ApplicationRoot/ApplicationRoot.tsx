@@ -2,7 +2,7 @@ import * as React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { configureAppStore } from '../../store/configureStore';
-// import { GlobalStyle, theme } from 'styles/global-styles';
+import { GlobalStyle, theme } from 'styles/global-styles';
 import { Routes } from 'app/Routes';
 import { ThemeProvider, StyledEngineProvider, Grid } from '@mui/material';
 // import { GlobalDisplay } from './GlobalDisplay';
@@ -20,8 +20,9 @@ export const { store } = configureAppStore();
 export const ApplicationRoot: React.FC = () => {
   return (
     <StyledEngineProvider injectFirst>
-      {/* <GlobalStyle /> */}
+      <GlobalStyle />
       <CssBaseline>
+        <ThemeProvider theme={theme}>
           <Provider store={store}>
             <React.StrictMode>
                 <div>
@@ -40,6 +41,7 @@ export const ApplicationRoot: React.FC = () => {
                 </div>
             </React.StrictMode>
           </Provider>
+        </ThemeProvider>
       </CssBaseline>
     </StyledEngineProvider>
   );
