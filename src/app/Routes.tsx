@@ -5,7 +5,6 @@ import { App } from '../App';
 import { Layout } from './layout/Layout';
 import { PrivateRoute } from './PrivateRoute';
 // import { OptimizelyFlagsLoadable } from './components/Admin/OptimizelyFlags/OptimizelyFlags.loadable';
-import { HomePage } from './layout/pages/HomePage';
 import { AppHomeLoadable } from './components/AppHome/AppHome.loadable';
 import { AppHome } from './components/AppHome/AppHome';
 import { Navbar } from './components/Navigation/Navigation';

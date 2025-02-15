@@ -1,125 +1,144 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="./favicon.ico" />
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta name="description" content="Web site created using create-react-app" />
-    <meta http-equiv="Pragma" content="no-cache" />
-    <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate" />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="../public/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title><%= htmlWebpackPlugin.options.title %></title>
-
-    <% for (key in htmlWebpackPlugin.options.uiConfig) { %>
-    <script src="<%= htmlWebpackPlugin.options.uiConfig[key] %>" name="<%= key %>"></script>
-    <% } %>
-
-    <script>
-      (function (globalThis) {
-        var config = {
-          GENERATE_SOURCEMAP: typeof GENERATE_SOURCEMAP !== 'undefined' ? GENERATE_SOURCEMAP : '',
-          REACT_APP_API_URL: typeof REACT_APP_API_URL !== 'undefined' ? REACT_APP_API_URL : '',
-          REACT_APP_APP_TITLE: typeof REACT_APP_APP_TITLE !== 'undefined' ? REACT_APP_APP_TITLE : '',
-          REACT_APP_BASE_URL: typeof REACT_APP_BASE_URL !== 'undefined' ? REACT_APP_BASE_URL : '',
-          REACT_APP_IDP_AUTHORITY: typeof REACT_APP_IDP_AUTHORITY !== 'undefined' ? REACT_APP_IDP_AUTHORITY : '',
-          REACT_APP_LOCAL_API: typeof REACT_APP_LOCAL_API !== 'undefined' ? REACT_APP_LOCAL_API : '',
-          REACT_APP_CANDIDATE_SERVICE_BASE_URL:
-            typeof REACT_APP_CANDIDATE_SERVICE_BASE_URL !== 'undefined' ? REACT_APP_CANDIDATE_SERVICE_BASE_URL : '',
-          REACT_APP_ORDERS_SERVICE_BASE_URL:
-            typeof REACT_APP_ORDERS_SERVICE_BASE_URL !== 'undefined' ? REACT_APP_ORDERS_SERVICE_BASE_URL : '',
-          REACT_APP_FACILITIES_SERVICE_BASE_URL:
-            typeof REACT_APP_FACILITIES_SERVICE_BASE_URL !== 'undefined' ? REACT_APP_FACILITIES_SERVICE_BASE_URL : '',
-          REACT_APP_NOTIFICATION_SERVICE_BASE_URL:
-            typeof REACT_APP_NOTIFICATION_SERVICE_BASE_URL !== 'undefined'
-              ? REACT_APP_NOTIFICATION_SERVICE_BASE_URL
-              : '',
-          REACT_APP_TEMPLATE_SERVICE_BASE_URL:
-            typeof REACT_APP_TEMPLATE_SERVICE_BASE_URL !== 'undefined' ? REACT_APP_TEMPLATE_SERVICE_BASE_URL : '',
-          REACT_APP_TRACK_CHANGE_SERVICE_BASE_URL:
-            typeof REACT_APP_TRACK_CHANGE_SERVICE_BASE_URL !== 'undefined'
-              ? REACT_APP_TRACK_CHANGE_SERVICE_BASE_URL
-              : '',
-          REACT_APP_PLACEMENTS_SERVICE_BASE_URL:
-            typeof REACT_APP_PLACEMENTS_SERVICE_BASE_URL !== 'undefined' ? REACT_APP_PLACEMENTS_SERVICE_BASE_URL : '',
-          REACT_APP_TASKS_SERVICE_BASE_URL:
-            typeof REACT_APP_TASKS_SERVICE_BASE_URL !== 'undefined' ? REACT_APP_TASKS_SERVICE_BASE_URL : '',
-          REACT_APP_CREDENTIALING_SERVICE_BASE_URL:
-            typeof REACT_APP_CREDENTIALING_SERVICE_BASE_URL !== 'undefined'
-              ? REACT_APP_CREDENTIALING_SERVICE_BASE_URL
-              : '',
-          REACT_APP_CREDENTIALING_ATTACHMENT_SERVICE_BASE_URL:
-            typeof REACT_APP_CREDENTIALING_ATTACHMENT_SERVICE_BASE_URL !== 'undefined'
-              ? REACT_APP_CREDENTIALING_ATTACHMENT_SERVICE_BASE_URL
-              : '',
-          REACT_APP_GOOGLE_API_KEY: typeof REACT_APP_GOOGLE_API_KEY !== 'undefined' ? REACT_APP_GOOGLE_API_KEY : '',
-          REACT_APP_OIDC_CLIENT_ID: typeof REACT_APP_OIDC_CLIENT_ID !== 'undefined' ? REACT_APP_OIDC_CLIENT_ID : '',
-          REACT_APP_OIDC_SCOPE: typeof REACT_APP_OIDC_SCOPE !== 'undefined' ? REACT_APP_OIDC_SCOPE : '',
-          REACT_APP_ENV: typeof REACT_APP_ENV !== 'undefined' ? REACT_APP_ENV : '',
-          REACT_APP_APPLICATION_INSIGHTS_KEY:
-            typeof REACT_APP_APPLICATION_INSIGHTS_KEY !== 'undefined' ? REACT_APP_APPLICATION_INSIGHTS_KEY : '',
-          REACT_APP_NOTIFICATION_HUB_URL:
-            typeof REACT_APP_NOTIFICATION_HUB_URL !== 'undefined' ? REACT_APP_NOTIFICATION_HUB_URL : '',
-          REACT_APP_NOTIFICATION_FUNCTION_BASE_URL:
-            typeof REACT_APP_NOTIFICATION_FUNCTION_BASE_URL !== 'undefined'
-              ? REACT_APP_NOTIFICATION_FUNCTION_BASE_URL
-              : '',
-          REACT_APP_TINYMCE_API_KEY: typeof REACT_APP_TINYMCE_API_KEY !== 'undefined' ? REACT_APP_TINYMCE_API_KEY : '',
-          REACT_APP_OPTIMIZELY_SDK_KEY:
-            typeof REACT_APP_OPTIMIZELY_SDK_KEY !== 'undefined' ? REACT_APP_OPTIMIZELY_SDK_KEY : '',
-          REACT_APP_FACILITY_URL: typeof REACT_APP_FACILITY_URL !== 'undefined' ? REACT_APP_FACILITY_URL : '',
-          REACT_APP_PACKETGEN_URL: typeof REACT_APP_PACKETGEN_URL !== 'undefined' ? REACT_APP_PACKETGEN_URL : '',
-          REACT_APP_CASE_MANAGEMENT: typeof REACT_APP_CASE_MANAGEMENT !== 'undefined' ? REACT_APP_CASE_MANAGEMENT : '',
-          REACT_APP_GOOGLE_DIRECTIONS_URL:
-            typeof REACT_APP_GOOGLE_DIRECTIONS_URL !== 'undefined' ? REACT_APP_GOOGLE_DIRECTIONS_URL : '',
-          REACT_APP_WALKME_CDN: typeof REACT_APP_WALKME_CDN !== 'undefined' ? REACT_APP_WALKME_CDN : '',
-          REACT_APP_FACILITY_CONTRACTS:
-            typeof REACT_APP_FACILITY_CONTRACTS !== 'undefined' ? REACT_APP_FACILITY_CONTRACTS : '',
-          REACT_APP_PASSPORT_URL : typeof REACT_APP_PASSPORT_URL !== 'undefined' ? REACT_APP_PASSPORT_URL : '',
-          REACT_APP_LOGROCKET_KEY : typeof REACT_APP_LOGROCKET_KEY !== 'undefined' ? REACT_APP_LOGROCKET_KEY : '',
-          REACT_APP_RENDERING_DEBOUNCE : typeof REACT_APP_RENDERING_DEBOUNCE !== 'undefined' ? REACT_APP_RENDERING_DEBOUNCE : '',
-          REACT_APP_REPORT_BRAIN_URL : typeof REACT_APP_REPORT_BRAIN_URL !== 'undefined' ? REACT_APP_REPORT_BRAIN_URL : '',
-          REACT_APP_REPORT_R108_URL : typeof REACT_APP_REPORT_R108_URL !== 'undefined' ? REACT_APP_REPORT_R108_URL : '',
-        };
-
-        globalThis.app = {
-          env: config,
-        };
-      })(window);
-    </script>
-    <title>Modern Magic Luxury Furniture</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root" style="position: fixed; top: 0; width: 100%;"></div>
-
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+     
+   <head>
+          
+      <meta charset="utf-8" />
+          
+      <link rel="icon" href="./favicon.ico" />
+          
+      <meta charset="utf-8" />
+          
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+          
+      <meta name="theme-color" content="#000000" />
+          
+      <meta name="description" content="Web site created using create-react-app" />
+          
+      <meta http-equiv="Pragma" content="no-cache" />
+          
+      <meta http-equiv="cache-control" content="no-cache, no-store, must-revalidate" />
+          
+      <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+          
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+          
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+          
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+          <!--
+               manifest.json provides metadata used when your web app is installed on a
+               user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+             -->
+          
+      <link rel="manifest" href="../public/manifest.json" />
+          <!--
+               Notice the use of %PUBLIC_URL% in the tags above.
+               It will be replaced with the URL of the `public` folder during the build.
+               Only files inside the `public` folder can be referenced from the HTML.
+         
+               Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+               work correctly both with client-side routing and a non-root public URL.
+               Learn how to configure a non-root public URL by running `npm run build`.
+             -->
+          
+      <title><%= htmlWebpackPlugin.options.title %></title>
+          <% for (key in htmlWebpackPlugin.options.uiConfig) { %>
+          <script src="<%= htmlWebpackPlugin.options.uiConfig[key] %>" name="<%= key %>"></script>
+          <% } %>
+          <script>
+               (function (globalThis) {
+                 var config = {
+                   GENERATE_SOURCEMAP: typeof GENERATE_SOURCEMAP !== 'undefined' ? GENERATE_SOURCEMAP : '',
+                   REACT_APP_API_URL: typeof REACT_APP_API_URL !== 'undefined' ? REACT_APP_API_URL : '',
+                   REACT_APP_APP_TITLE: typeof REACT_APP_APP_TITLE !== 'undefined' ? REACT_APP_APP_TITLE : '',
+                   REACT_APP_BASE_URL: typeof REACT_APP_BASE_URL !== 'undefined' ? REACT_APP_BASE_URL : '',
+                   REACT_APP_IDP_AUTHORITY: typeof REACT_APP_IDP_AUTHORITY !== 'undefined' ? REACT_APP_IDP_AUTHORITY : '',
+                   REACT_APP_LOCAL_API: typeof REACT_APP_LOCAL_API !== 'undefined' ? REACT_APP_LOCAL_API : '',
+                   REACT_APP_CANDIDATE_SERVICE_BASE_URL:
+                     typeof REACT_APP_CANDIDATE_SERVICE_BASE_URL !== 'undefined' ? REACT_APP_CANDIDATE_SERVICE_BASE_URL : '',
+                   REACT_APP_ORDERS_SERVICE_BASE_URL:
+                     typeof REACT_APP_ORDERS_SERVICE_BASE_URL !== 'undefined' ? REACT_APP_ORDERS_SERVICE_BASE_URL : '',
+                   REACT_APP_FACILITIES_SERVICE_BASE_URL:
+                     typeof REACT_APP_FACILITIES_SERVICE_BASE_URL !== 'undefined' ? REACT_APP_FACILITIES_SERVICE_BASE_URL : '',
+                   REACT_APP_NOTIFICATION_SERVICE_BASE_URL:
+                     typeof REACT_APP_NOTIFICATION_SERVICE_BASE_URL !== 'undefined'
+                       ? REACT_APP_NOTIFICATION_SERVICE_BASE_URL
+                       : '',
+                   REACT_APP_TEMPLATE_SERVICE_BASE_URL:
+                     typeof REACT_APP_TEMPLATE_SERVICE_BASE_URL !== 'undefined' ? REACT_APP_TEMPLATE_SERVICE_BASE_URL : '',
+                   REACT_APP_TRACK_CHANGE_SERVICE_BASE_URL:
+                     typeof REACT_APP_TRACK_CHANGE_SERVICE_BASE_URL !== 'undefined'
+                       ? REACT_APP_TRACK_CHANGE_SERVICE_BASE_URL
+                       : '',
+                   REACT_APP_PLACEMENTS_SERVICE_BASE_URL:
+                     typeof REACT_APP_PLACEMENTS_SERVICE_BASE_URL !== 'undefined' ? REACT_APP_PLACEMENTS_SERVICE_BASE_URL : '',
+                   REACT_APP_TASKS_SERVICE_BASE_URL:
+                     typeof REACT_APP_TASKS_SERVICE_BASE_URL !== 'undefined' ? REACT_APP_TASKS_SERVICE_BASE_URL : '',
+                   REACT_APP_CREDENTIALING_SERVICE_BASE_URL:
+                     typeof REACT_APP_CREDENTIALING_SERVICE_BASE_URL !== 'undefined'
+                       ? REACT_APP_CREDENTIALING_SERVICE_BASE_URL
+                       : '',
+                   REACT_APP_CREDENTIALING_ATTACHMENT_SERVICE_BASE_URL:
+                     typeof REACT_APP_CREDENTIALING_ATTACHMENT_SERVICE_BASE_URL !== 'undefined'
+                       ? REACT_APP_CREDENTIALING_ATTACHMENT_SERVICE_BASE_URL
+                       : '',
+                   REACT_APP_GOOGLE_API_KEY: typeof REACT_APP_GOOGLE_API_KEY !== 'undefined' ? REACT_APP_GOOGLE_API_KEY : '',
+                   REACT_APP_OIDC_CLIENT_ID: typeof REACT_APP_OIDC_CLIENT_ID !== 'undefined' ? REACT_APP_OIDC_CLIENT_ID : '',
+                   REACT_APP_OIDC_SCOPE: typeof REACT_APP_OIDC_SCOPE !== 'undefined' ? REACT_APP_OIDC_SCOPE : '',
+                   REACT_APP_ENV: typeof REACT_APP_ENV !== 'undefined' ? REACT_APP_ENV : '',
+                   REACT_APP_APPLICATION_INSIGHTS_KEY:
+                     typeof REACT_APP_APPLICATION_INSIGHTS_KEY !== 'undefined' ? REACT_APP_APPLICATION_INSIGHTS_KEY : '',
+                   REACT_APP_NOTIFICATION_HUB_URL:
+                     typeof REACT_APP_NOTIFICATION_HUB_URL !== 'undefined' ? REACT_APP_NOTIFICATION_HUB_URL : '',
+                   REACT_APP_NOTIFICATION_FUNCTION_BASE_URL:
+                     typeof REACT_APP_NOTIFICATION_FUNCTION_BASE_URL !== 'undefined'
+                       ? REACT_APP_NOTIFICATION_FUNCTION_BASE_URL
+                       : '',
+                   REACT_APP_TINYMCE_API_KEY: typeof REACT_APP_TINYMCE_API_KEY !== 'undefined' ? REACT_APP_TINYMCE_API_KEY : '',
+                   REACT_APP_OPTIMIZELY_SDK_KEY:
+                     typeof REACT_APP_OPTIMIZELY_SDK_KEY !== 'undefined' ? REACT_APP_OPTIMIZELY_SDK_KEY : '',
+                   REACT_APP_FACILITY_URL: typeof REACT_APP_FACILITY_URL !== 'undefined' ? REACT_APP_FACILITY_URL : '',
+                   REACT_APP_PACKETGEN_URL: typeof REACT_APP_PACKETGEN_URL !== 'undefined' ? REACT_APP_PACKETGEN_URL : '',
+                   REACT_APP_CASE_MANAGEMENT: typeof REACT_APP_CASE_MANAGEMENT !== 'undefined' ? REACT_APP_CASE_MANAGEMENT : '',
+                   REACT_APP_GOOGLE_DIRECTIONS_URL:
+                     typeof REACT_APP_GOOGLE_DIRECTIONS_URL !== 'undefined' ? REACT_APP_GOOGLE_DIRECTIONS_URL : '',
+                   REACT_APP_WALKME_CDN: typeof REACT_APP_WALKME_CDN !== 'undefined' ? REACT_APP_WALKME_CDN : '',
+                   REACT_APP_FACILITY_CONTRACTS:
+                     typeof REACT_APP_FACILITY_CONTRACTS !== 'undefined' ? REACT_APP_FACILITY_CONTRACTS : '',
+                   REACT_APP_PASSPORT_URL : typeof REACT_APP_PASSPORT_URL !== 'undefined' ? REACT_APP_PASSPORT_URL : '',
+                   REACT_APP_LOGROCKET_KEY : typeof REACT_APP_LOGROCKET_KEY !== 'undefined' ? REACT_APP_LOGROCKET_KEY : '',
+                   REACT_APP_RENDERING_DEBOUNCE : typeof REACT_APP_RENDERING_DEBOUNCE !== 'undefined' ? REACT_APP_RENDERING_DEBOUNCE : '',
+                   REACT_APP_REPORT_BRAIN_URL : typeof REACT_APP_REPORT_BRAIN_URL !== 'undefined' ? REACT_APP_REPORT_BRAIN_URL : '',
+                   REACT_APP_REPORT_R108_URL : typeof REACT_APP_REPORT_R108_URL !== 'undefined' ? REACT_APP_REPORT_R108_URL : '',
+                 };
+         
+                 globalThis.app = {
+                   env: config,
+                 };
+               })(window);
+             
+      </script>
+          
+      <title>Modern Magic Luxury Furniture</title>
+        
+   </head>
+     
+   <body>
+          
+      <noscript>You need to enable JavaScript to run this app.</noscript>
+          
+      <div id="root"></div>
+          <!--
+               This HTML file is a template.
+               If you open it directly in the browser, you will see an empty page.
+         
+               You can add webfonts, meta tags, or analytics to this file.
+               The build step will place the bundled scripts into the <body> tag.
+         
+               To begin the development, run `npm start` or `yarn start`.
+               To create a production bundle, use `npm run build` or `yarn build`.
+             -->
+        
+   </body>
 </html>

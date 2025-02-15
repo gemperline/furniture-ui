@@ -3,7 +3,6 @@ import { CircularProgress } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { Layout } from './layout/Layout';
 import { Route } from 'react-router-dom';
-import { HomePage } from './layout/pages/HomePage';
 // import { NetworkError } from './components/Common/NetworkError/NetworkError';
 
 export const PrivateRoute = ({

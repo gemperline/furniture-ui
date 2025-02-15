@@ -21,7 +21,9 @@ const useStyles = makeStyles<{ open: boolean }>()((theme: Theme, props) => ({
         // height: !props.open ? '60px' : '200px',
         position: 'fixed',
         top: 0,
+        width: '100%',
         borderBottom: 'solid 2px rgba(231,110,73,1)',
+        zIndex: 1200,
     },
     navBar: {
         width: '100%',
@@ -46,7 +48,7 @@ const useStyles = makeStyles<{ open: boolean }>()((theme: Theme, props) => ({
         }),
     },
     companyName: {
-        justifyContent: 'flex-start',
+        justifyContent: 'center',
         display: 'flex',
         whiteSpace: 'nowrap',
         letterSpacing: -1,
@@ -199,7 +201,7 @@ export const Navbar = () => {
                       </IconButton>
                   </Grid>
                   <Grid className={classes.companyName}>
-                      Modern Magic
+                      {'Modern Magic'}
                   </Grid>
                   <Grid className={classes.rightMenu}>
                       <IconButton>
