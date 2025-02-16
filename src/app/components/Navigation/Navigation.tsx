@@ -14,6 +14,32 @@ import { PrivateComponent } from '../Common/PrivateComponent/PrivateComponent';
 import { breadcrumbActions } from '../Common/BreadcrumbNavigation/BreadcrumbNavigation.redux';
 import { useHistory } from 'react-router-dom';
 
+const slideDown = keyframes`
+  from {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+  }
+  to {
+    max-height: 500px;
+    opacity: 1;
+    overflow: hidden;
+  }
+`;
+
+const slideUp = keyframes`
+  from {
+    max-height: 500px;
+    opacity: 1;
+    overflow: hidden;
+  }
+  to {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+  }
+`;
+
 const useStyles = makeStyles<{ open: boolean }>()((theme: Theme, props) => ({
     navMenu: {
         display: 'flex',
@@ -28,12 +54,15 @@ const useStyles = makeStyles<{ open: boolean }>()((theme: Theme, props) => ({
     navBar: {
         width: '100%',
         height: '60px',
-        boxShadow: props.open ? '0px 1px 6px #757575' : 'none',
+        // boxShadow: props.open ? '0px 1px 6px #757575' : 'none',
         alignItems: 'center',
         display: 'grid',
         gridTemplateColumns: '1fr 1fr 1fr',
         backgroundColor: '#FFF',
         fontSize: '24px',
+    },
+    listItem: {
+      borderBottom: '1px solid #9b9b9b',
     },
     drawerCollapse: {
         transition: theme.transitions.create('width', {
@@ -51,7 +80,7 @@ const useStyles = makeStyles<{ open: boolean }>()((theme: Theme, props) => ({
         justifyContent: 'center',
         display: 'flex',
         whiteSpace: 'nowrap',
-        letterSpacing: -1,
+        letterSpacing: '2px',
     },
     leftMenu: {
         display: 'flex',
@@ -67,9 +96,10 @@ const useStyles = makeStyles<{ open: boolean }>()((theme: Theme, props) => ({
         height: '2px',
     },
     font: {
-        [theme.breakpoints.up('xs')]: {
-          fontSize: '12px !important',
-        },
+      letterSpacing: '1px',
+      [theme.breakpoints.up('xs')]: {
+        fontSize: '16px !important',
+      },
     },
     listWrapperExpanded: {
         width: 'auto',
@@ -109,35 +139,22 @@ const useStyles = makeStyles<{ open: boolean }>()((theme: Theme, props) => ({
         `} 150ms linear 1 normal forwards`,
       },
       menuList: {
-        // position: 'relative',
-        zIndex: theme.zIndex.drawer + 2,
-        boxShadow: '4px -1px 4px -1px rgba(0,0,0,0.24)',
-        display: 'flex',
-        flexDirection: 'column',
+        animation: props.open ? `${slideDown} 300ms ease-in-out forwards` : `${slideUp} 300ms ease-in-out forwards`,
+        overflow: 'hidden',
+    },
+    firstListItem: {
+      position: 'relative',
+      borderBottom: '1px solid #9b9b9b',
+      '&::before': {
+          content: '""',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '5px',
+          boxShadow: 'inset 0 5px 5px -5px rgba(0, 0, 0, 0.8)',
       },
-      menuListCollapsed: {
-        // height: '100vh',
-        display: 'none',
-        paddingBottom: '50px',
-        animation: `${keyframes`
-        0% {
-          height: 100vh;
-          padding-bottom: 50px;
-        }
-        98% {
-          height: 100vh;
-          padding-bottom: 50px;
-        }
-        99% {
-          height: unset;
-          padding-bottom: 0px;
-        }
-        100% {
-          height: unset;
-          padding-bottom: 0px;
-        }
-        `} 150ms linear 1 normal forwards`,
-      },
+    },
 }));
 
 export const Navbar = () => {
@@ -212,21 +229,18 @@ export const Navbar = () => {
                       </IconButton>
                   </Grid>
               </Grid>
-              {open && (
+              {/* {open && (
                   <div
                   style={{ overflow: 'hidden' }}
                   className={cx({
-                    [classes.listWrapperExpanded]: navigationExpanded,
+                    // [classes.listWrapperExpanded]: navigationExpanded,
                     [classes.listWrapperCollapsed]: !navigationExpanded,
                   })}
-                >
+                > */}
+                <Box className={classes.menuList}>
                   <List
                     id="global-nav-list"
                     disablePadding
-                    className={cx(classes.menuList, {
-                      [classes.menuListExpanded]: open,
-                      [classes.menuListCollapsed]: !open,
-                    })}
                     sx={{ overflowY: 'auto' }}
                   //   onMouseEnter={() => {
                   //     if (!navigationExpanded) {
@@ -253,8 +267,9 @@ export const Navbar = () => {
                       </PrivateComponent>
                     ))}
                   </List>
-                </div>
-              )}
+                </Box>
+                {/* </div> */}
+              {/* )} */}
           </Paper>
       </ClickAwayListener>
     )
@@ -266,20 +281,21 @@ const NavMenuItem = ({ open, ...props }) => {
     const { t } = useTranslation();
   
     const handleListItemClick = () => {
-      if (menuItem.clickable !== false) props.menuItemClicked(menuItem);
+      if (menuItem.clickable !== false) menuItemClicked(menuItem);
     };
 
     return (
       <ListItem
         classes={{
-        //   root: cx(classes.listItem),
-        //   gutters: classes.listItemGutters,
+          root: index === 0 ? cx(classes.firstListItem) : cx(classes.listItem),
+          // gutters: classes.listItemGutters,
         }}
         key={menuItem.tag}
         // className={cx({
         //   [classes.option]: !isMenuItemSelected && !isSubMenuSelected,
         //   [classes.optionSelected]: isMenuItemSelected || isSubMenuSelected,
         // })}
+        onClick={handleListItemClick}
       >
           <Grid container wrap="nowrap" style={{ marginLeft: '0px', display: 'block' }}>
             <Grid item>
@@ -307,7 +323,6 @@ const NavMenuItem = ({ open, ...props }) => {
                     >
                       <ListItemText
                         primaryTypographyProps={{ className: classes.font }}
-                        onClick={handleListItemClick}
                       >
                         {menuItem.tag}
                       </ListItemText>
