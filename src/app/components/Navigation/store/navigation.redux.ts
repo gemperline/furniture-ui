@@ -2,9 +2,11 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 export type NavigationTypes =
   | 'home'
-  | 'tables'
-  | 'chairs'
-  | 'lighting';
+  | 'livingRoom'
+  | 'kitchen+dining'
+  | 'bedroom'
+  | 'outdoor'
+  | 'decor';
 export type INavigation = NavigationMenu<NavigationTypes, string>;
 export interface NavigationMenu<T, P, C = {}> extends NavigationOption<T> {
   tag: string;
@@ -59,40 +61,58 @@ const homeMenuOption: INavigation = {
   key: 'home',
   icon: 0,
   name: 'navMenu.home',
-  tag: 'home',
+  tag: 'Home',
   path: '/',
 };
 
-const tablesMenu: INavigation = {
-  key: 'tables',
+const livingRoomMenuOption: INavigation = {
+  key: 'livingRoom',
   icon: 3,
-  name: 'navMenu.tables',
-  tag: 'tables',
-  path: '/shop/tables',
+  name: 'navMenu.livingRoom',
+  tag: 'Living Room',
+  path: '/shop/living-room',
 };
 
-const chairsMenu: INavigation = {
-    key: 'chairs',
-    icon: 3,
-    name: 'navMenu.chairs',
-    tag: 'chairs',
-    path: '/shop/chairs',
-  };
+const diningRoomMenuOption: INavigation = {
+  key: 'kitchen+dining',
+  icon: 3,
+  name: 'navMenu.dining',
+  tag: 'Kitchen + Dining',
+  path: '/shop/kitchen-dining',
+};
 
-  const lightingMenu: INavigation = {
-    key: 'lighting',
-    icon: 3,
-    name: 'navMenu.lighting',
-    tag: 'lighting',
-    path: '/shop/lighting',
-  };
+const bedroomMenuOption: INavigation = {
+  key: 'bedroom',
+  icon: 3,
+  name: 'navMenu.bedroom',
+  tag: 'Bedroom',
+  path: '/shop/bedroom',
+};
+
+const outdoorMenuOption: INavigation = {
+  key: 'outdoor',
+  icon: 3,
+  name: 'navMenu.outdoor',
+  tag: 'Outdoor',
+  path: '/shop/outdoor',
+};
+
+const decorMenuOption: INavigation = {
+  key: 'decor',
+  icon: 3,
+  name: 'navMenu.decor',
+  tag: 'Decor',
+  path: '/shop/decor',
+};
 
 export const initialState: INavigationMenu = {
   navigationMenu: [
     homeMenuOption,
-    tablesMenu,
-    chairsMenu,
-    lightingMenu,
+    livingRoomMenuOption,
+    diningRoomMenuOption,
+    bedroomMenuOption,
+    outdoorMenuOption,
+    decorMenuOption,
   ],
   selectedMenu: homeMenuOption,
   navigationExpanded: undefined,
@@ -102,7 +122,6 @@ const navigationSlice = createSlice({
     name: 'navigation',
     initialState,
     reducers: {
-      // new navigation structure
       expandNavigation(state, action: PayloadAction<boolean>) {
         return { ...state, navigationExpanded: action.payload };
       },
