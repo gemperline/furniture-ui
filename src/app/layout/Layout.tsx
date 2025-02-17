@@ -80,7 +80,6 @@ export const DisableAppScroll = () => {
 
 export const Layout = props => {
   const { classes, cx } = useStyles();
-    // useInjectReducer({ key: candidateDetailSliceKey, reducer: candidateDetailReducer });
 
   const { navigationExpanded } = useSelector(selectNavigationMenu);
   const { Component, ...rest } = props;

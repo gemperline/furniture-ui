@@ -88,6 +88,9 @@ const useStyles = makeStyles<{ open: boolean }>()((theme: Theme, props) => ({
     rightMenu: {
         marginLeft: 'auto',
     },
+    iconBtn: {
+        padding: '12px',
+    },
     navIcon: {
         background: 'none',
     },
@@ -213,18 +216,18 @@ export const Navbar = () => {
           <Paper classes={{ root: `${classes.navMenu} ${open ? classes.drawer : classes.drawerCollapse}` }}>
               <Grid className={classes.navBar}>
                   <Grid className={classes.leftMenu}>
-                      <IconButton onClick={toggleMenuOpen}>
+                      <IconButton className={classes.iconBtn} onClick={toggleMenuOpen}>
                           {open ? <CloseIcon className={classes.navIcon} /> : <MenuIcon className={classes.navIcon} />}
                       </IconButton>
                   </Grid>
-                  <Grid className={classes.companyName}>
+                  <Grid className={classes.companyName} onClick={() => history.push('/')}>
                       {'Modern Magic'}
                   </Grid>
                   <Grid className={classes.rightMenu}>
-                      <IconButton>
+                      <IconButton className={classes.iconBtn}>
                           <AccountCircleIcon className={classes.navIcon} />
                       </IconButton>
-                      <IconButton>
+                      <IconButton className={classes.iconBtn}>
                           <ShoppingCartIcon className={ classes.navIcon } />
                       </IconButton>
                   </Grid>

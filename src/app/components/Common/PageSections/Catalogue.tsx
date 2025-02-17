@@ -1,9 +1,9 @@
 import { Box, Grid, Paper } from '@mui/material';
 import { makeStyles } from 'tss-react/mui';
 import React from 'react';
-import { DepartmentTile } from '../DepartmentTile';
+import { ProductTile } from '../ProductTile';
 import { useTranslation } from 'react-i18next';
-import { MOCK_DEPARTMENTS } from 'app/mockData/MOCK_DEPARTMENTS';
+import { MOCK_PRODUCTS } from 'app/mockData/MOCK_PRODUCTS';
 
 const useStyles = makeStyles()((theme) => ({
   sectionHeader: {
@@ -17,12 +17,11 @@ const useStyles = makeStyles()((theme) => ({
   },
 }));
 
-export const DepartmentsSection = ({
-  title,
-  ...props
+export const CatalogueSection = ({
+  headerTitle,
 }: {
   [key: string]: any;
-  title?: string;
+  headerTitle?: string;
 }) => {
   const { classes } = useStyles();
   const { t } = useTranslation();
@@ -30,17 +29,14 @@ export const DepartmentsSection = ({
   return (
     <Grid container>
       <Grid item xs={12}>
-        <h1 className={classes.sectionHeader}>{`${t('Shop By Department')}`}</h1>
+        <h1 className={classes.sectionHeader}>{headerTitle}</h1>
       </Grid>
       <Grid container className={classes.tilesWrapper}>
-        {MOCK_DEPARTMENTS.map((department) => (
-          <Grid item xs={6} sm={6} md={4} lg={3} key={department.name}>
-            <DepartmentTile
-              name={department.name}
-              description={department.description}
-              image={department.image}
-              altText={department.name}
-              path={department.path}
+        {MOCK_PRODUCTS.map((product) => (
+          <Grid item xs={6} sm={6} md={4} lg={3} key={product.name}>
+            <ProductTile
+              key={product.name}
+              product={product}
             />
           </Grid>
         ))}

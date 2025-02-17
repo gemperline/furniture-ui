@@ -70,7 +70,7 @@ const livingRoomMenuOption: INavigation = {
   icon: 3,
   name: 'navMenu.livingRoom',
   tag: 'Living Room',
-  path: '/shop/living-room',
+  path: '/living-room',
 };
 
 const diningRoomMenuOption: INavigation = {
@@ -78,7 +78,7 @@ const diningRoomMenuOption: INavigation = {
   icon: 3,
   name: 'navMenu.dining',
   tag: 'Kitchen + Dining',
-  path: '/shop/kitchen-dining',
+  path: '/kitchen-dining',
 };
 
 const bedroomMenuOption: INavigation = {
@@ -86,7 +86,7 @@ const bedroomMenuOption: INavigation = {
   icon: 3,
   name: 'navMenu.bedroom',
   tag: 'Bedroom',
-  path: '/shop/bedroom',
+  path: '/bedroom',
 };
 
 const outdoorMenuOption: INavigation = {
@@ -94,7 +94,7 @@ const outdoorMenuOption: INavigation = {
   icon: 3,
   name: 'navMenu.outdoor',
   tag: 'Outdoor',
-  path: '/shop/outdoor',
+  path: '/outdoor',
 };
 
 const decorMenuOption: INavigation = {
@@ -102,7 +102,7 @@ const decorMenuOption: INavigation = {
   icon: 3,
   name: 'navMenu.decor',
   tag: 'Decor',
-  path: '/shop/decor',
+  path: '/decor',
 };
 
 export const initialState: INavigationMenu = {
