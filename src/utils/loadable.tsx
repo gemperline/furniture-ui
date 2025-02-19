@@ -1,6 +1,6 @@
 import { Box, CircularProgress, Fab } from '@mui/material';
 import React, { lazy, Suspense } from 'react';
-import logo from '../logo.svg';
+import { theme } from 'styles/global-styles';
 
 interface Opts {
   fallback: React.ReactNode;
@@ -24,11 +24,12 @@ export const lazyLoad = <T extends Promise<any>, U extends React.ComponentType<a
               },
             ]}
           >
-            <img src={logo} alt="AMN" />
-            <CircularProgress
+            <img src={null} alt="Modern Magic" /> {/* loading spinner shown here */}
+            <CircularProgress 
               size={62}
               thickness={2}
               sx={{
+                color: theme.palette.system.mmOrange,
                 position: 'absolute',
                 top: -2.5,
                 left: -2.5,

@@ -44,12 +44,13 @@ const useStyles = makeStyles<{ open: boolean }>()((theme: Theme, props) => ({
     navMenu: {
         display: 'flex',
         flexDirection: 'column',
-        // height: !props.open ? '60px' : '200px',
+        // height: !props.open ? '60px' : '200px', // not having a known height causes menu to show upon refresh
         position: 'fixed',
         top: 0,
         width: '100%',
-        borderBottom: 'solid 2px rgba(231,110,73,1)',
+        borderBottom: 'solid 2px #e76e49',
         zIndex: 1200,
+        boxShadow: 'none',
     },
     navBar: {
         width: '100%',
@@ -224,12 +225,12 @@ export const Navbar = () => {
                       {'Modern Magic'}
                   </Grid>
                   <Grid className={classes.rightMenu}>
-                      <IconButton className={classes.iconBtn}>
-                          <AccountCircleIcon className={classes.navIcon} />
-                      </IconButton>
-                      <IconButton className={classes.iconBtn}>
-                          <ShoppingCartIcon className={ classes.navIcon } />
-                      </IconButton>
+                    <IconButton className={classes.iconBtn}>
+                      <ShoppingCartIcon className={ classes.navIcon } />
+                    </IconButton>
+                    <IconButton className={classes.iconBtn}>
+                      <AccountCircleIcon className={classes.navIcon} />
+                    </IconButton>
                   </Grid>
               </Grid>
               {/* {open && (
