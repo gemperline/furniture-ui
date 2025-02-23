@@ -7,7 +7,7 @@ export interface IProduct {
     altText?: string;
     sku: string;
     rating?: number;
-    originalPrice: number;
+    price: number;
     salePrice?: number;
     varieties?: any[];
 }

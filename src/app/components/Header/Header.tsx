@@ -1,7 +1,7 @@
 import { Grid } from '@mui/material';
 import React from 'react';
 import { makeStyles } from 'tss-react/mui';
-import homeHeaderLivingRoom from '../../assets/images/homeHeaderLivingRoom.png';
+import homeHeaderLivingRoom from '../../assets/images/chicLivingRoom3.png';
 
 const useStyles = makeStyles()({
     imageContainer: {

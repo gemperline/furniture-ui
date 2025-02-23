@@ -22,15 +22,15 @@ export const ReviewStars: React.FC<ReviewStarsProps> = ({ rating, totalStars = 5
     <Box display="flex">
       {/* Render full stars */}
       {[...Array(adjustedFullStars)].map((_, i) => (
-        <StarIcon key={`full-${i}`} sx={{ color: '#fc9003' }} />
+        <StarIcon key={`full-${i}`} sx={{ color: '#fc9003', width: '.75em', height: '.75em' }} />
       ))}
 
       {/* Render half star if applicable */}
-      {hasHalfStar && <StarHalfIcon sx={{ color: '#fc9003' }} />}
+      {hasHalfStar && <StarHalfIcon sx={{ color: '#fc9003', width: '.75em', height: '.75em' }} />}
 
       {/* Render empty stars */}
       {[...Array(emptyStars)].map((_, i) => (
-        <StarBorderIcon key={`empty-${i}`} sx={{ color: '#fc9003' }} />
+        <StarBorderIcon key={`empty-${i}`} sx={{ color: '#fc9003', width: '.75em', height: '.75em' }} />
       ))}
     </Box>
   );

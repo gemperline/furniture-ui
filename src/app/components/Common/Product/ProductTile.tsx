@@ -33,7 +33,7 @@ const useStyles = makeStyles<{ variant }>()((theme, { variant }) => ({
     alignItems: 'inherit',
     width: '100%',
   },
-  textContainer: {
+  detailsFirst: {
     letterSpacing: '1px',
     flex: variant === ProductTileVariant.REGULAR ? 2 : 1,
     textAlign: variant === ProductTileVariant.CENTERED ? 'center' : 'left',
@@ -46,13 +46,20 @@ const useStyles = makeStyles<{ variant }>()((theme, { variant }) => ({
     overflow: 'hidden',
     textOverflow: 'ellipsis',
   },
-  reviewsContainer: {
+  detailsSecond: {
     display: 'flex',
-    justifyContent: 'flex-end',
-    paddingLeft: '12px',
+    flexDirection: 'column',
+    alignItems: variant === ProductTileVariant.REGULAR ? 'flex-end' : 'center',
+    paddingLeft: variant === ProductTileVariant.REGULAR && '12px',
   },
   varieties: {
     fontSize: '12px',
+  },
+  price: {
+    fontSize: '16px',
+    fontWeight: 'bold',
+    color: '#616061',
+    letterSpacing: '1px',
   },
 }));
 
@@ -60,7 +67,6 @@ export const ProductTile = ({
   product,
   variant,
 }: {
-  [key: string]: any;
   product: IProduct;
   variant: ProductTileVariant;
 }) => {
@@ -69,7 +75,7 @@ export const ProductTile = ({
   const { sku, name, description, image, rating, varieties } = product;
 
   return (
-    <Grid item className={classes.tile}>
+    <Grid id={`product-${product.id}`} item className={classes.tile}>
       <Button
         className={classes.button}
         onClick={() => history.push(`/furniture/${sku}`)}
@@ -80,22 +86,33 @@ export const ProductTile = ({
       />
       <Grid container className={classes.details}>
         <Grid item className={classes.detailsUpper}>
-          <Grid item className={classes.textContainer}>
-            <Typography color="black" className={classes.productName}>
+          <Grid item className={classes.detailsFirst}>
+            <Typography className={classes.productName}>
               {name}
             </Typography>
+            {varieties?.length && varieties[0].options?.length > 1 ? (
+              <Grid item>
+                <Typography className={classes.varieties}>
+                  {`${varieties[0].options?.length} ${varieties[0].type}`}
+                </Typography>
+              </Grid>
+            ) : (
+              // the following item is whitespace. Could make the product name take up the third line if it runs long and there's no additional colors/varieties.
+              // Othewise, use this whitespace.
+              <Grid item>
+                <Typography style={{ visibility: 'hidden' }} className={classes.varieties}>
+                  {'-'} 
+                </Typography>
+              </Grid>
+            )}
           </Grid>
-          <Grid item className={classes.reviewsContainer}>
+          <Grid item className={classes.detailsSecond}>
+            <Grid item>
+              <Typography className={classes.price}>{`$${product.price}`}</Typography> 
+            </Grid>
             <ReviewStars rating={rating} />
           </Grid>
         </Grid>
-        {varieties?.length && varieties[0].options?.length > 1 && (
-          <Grid item>
-            <Typography color="black" className={classes.varieties}>
-              {`${varieties[0].options?.length} ${varieties[0].type}`}
-            </Typography>
-          </Grid>
-        )}
       </Grid>
     </Grid>
   );

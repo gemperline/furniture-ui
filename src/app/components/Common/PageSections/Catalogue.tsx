@@ -48,7 +48,6 @@ interface IBreakPointProps {
 export const CatalogueSection = ({
   headerTitle,
 }: {
-  [key: string]: any;
   headerTitle?: string;
 }) => {
   const { classes } = useStyles();
@@ -111,14 +110,13 @@ export const CatalogueSection = ({
         {MOCK_PRODUCTS.map((product) => (
           <Grid 
             item 
-            key={product.sku}
+            key={product.id}
             xs={breakpoints?.xs} 
             sm={breakpoints?.sm} 
             md={breakpoints?.md} 
             lg={breakpoints?.lg}
           >
             <ProductTile
-              key={product.name}
               product={product}
               variant={tileVariant}
             />

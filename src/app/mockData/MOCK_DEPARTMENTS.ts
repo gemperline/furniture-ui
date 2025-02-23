@@ -1,14 +1,14 @@
 import BedroomImage from 'app/assets/images/bedroom.png';
 import DecorImage from 'app/assets/images/decorDept.png';
 import DiningRoomImage from 'app/assets/images/diningRoom.png';
-import LivingRoomImage from 'app/assets/images/livingRoom.png';
+import LivingRoomImage from 'app/assets/images/chicLivingRoom.png';
 import OutdoorImage from 'app/assets/images/outdoor.png';
 
 export const MOCK_DEPARTMENTS = [
     {
       name: 'livingRoom',
       description: 'Living Room',
-      image: BedroomImage,
+      image: LivingRoomImage,
       altText: 'Living Room Department',
       path: '/living-room',
     },
@@ -22,7 +22,7 @@ export const MOCK_DEPARTMENTS = [
     {
       name: 'bedroom',
       description: 'Bedroom',
-      image: LivingRoomImage,
+      image: BedroomImage,
       altText: 'Bedroom Department',
       path: '/bedroom',
     },

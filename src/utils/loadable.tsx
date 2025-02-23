@@ -14,19 +14,9 @@ export const lazyLoad = <T extends Promise<any>, U extends React.ComponentType<a
     fallback: (
       <div className="center" style={{ height: '100%' }}>
         <Box sx={{ m: 1, position: 'relative' }}>
-          <Fab
-            disabled
-            sx={[
-              {
-                '&:hover': {
-                  cursor: 'default',
-                },
-              },
-            ]}
-          >
-            <img src={null} alt="Modern Magic" /> {/* loading spinner shown here */}
+          <div>
             <CircularProgress 
-              size={62}
+              size={24}
               thickness={2}
               sx={{
                 color: theme.palette.system.mmOrange,
@@ -36,7 +26,7 @@ export const lazyLoad = <T extends Promise<any>, U extends React.ComponentType<a
                 zIndex: 1,
               }}
             />
-          </Fab>
+          </div>
         </Box>
       </div>
     ),
