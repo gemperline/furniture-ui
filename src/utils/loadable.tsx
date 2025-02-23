@@ -1,6 +1,6 @@
 import { Box, CircularProgress, Fab } from '@mui/material';
 import React, { lazy, Suspense } from 'react';
-import logo from '../logo.svg';
+import { theme } from 'styles/global-styles';
 
 interface Opts {
   fallback: React.ReactNode;
@@ -14,28 +14,19 @@ export const lazyLoad = <T extends Promise<any>, U extends React.ComponentType<a
     fallback: (
       <div className="center" style={{ height: '100%' }}>
         <Box sx={{ m: 1, position: 'relative' }}>
-          <Fab
-            disabled
-            sx={[
-              {
-                '&:hover': {
-                  cursor: 'default',
-                },
-              },
-            ]}
-          >
-            <img src={logo} alt="AMN" />
-            <CircularProgress
-              size={62}
+          <div>
+            <CircularProgress 
+              size={24}
               thickness={2}
               sx={{
+                color: theme.palette.system.mmOrange,
                 position: 'absolute',
                 top: -2.5,
                 left: -2.5,
                 zIndex: 1,
               }}
             />
-          </Fab>
+          </div>
         </Box>
       </div>
     ),

@@ -44,12 +44,13 @@ const useStyles = makeStyles<{ open: boolean }>()((theme: Theme, props) => ({
     navMenu: {
         display: 'flex',
         flexDirection: 'column',
-        // height: !props.open ? '60px' : '200px',
+        // height: !props.open ? '60px' : '200px', // not having a known height causes menu to show upon refresh
         position: 'fixed',
         top: 0,
         width: '100%',
-        borderBottom: 'solid 2px rgba(231,110,73,1)',
+        borderBottom: 'solid 2px #e76e49',
         zIndex: 1200,
+        boxShadow: 'none',
     },
     navBar: {
         width: '100%',
@@ -87,6 +88,9 @@ const useStyles = makeStyles<{ open: boolean }>()((theme: Theme, props) => ({
     },
     rightMenu: {
         marginLeft: 'auto',
+    },
+    iconBtn: {
+        padding: '12px',
     },
     navIcon: {
         background: 'none',
@@ -213,20 +217,20 @@ export const Navbar = () => {
           <Paper classes={{ root: `${classes.navMenu} ${open ? classes.drawer : classes.drawerCollapse}` }}>
               <Grid className={classes.navBar}>
                   <Grid className={classes.leftMenu}>
-                      <IconButton onClick={toggleMenuOpen}>
+                      <IconButton className={classes.iconBtn} onClick={toggleMenuOpen}>
                           {open ? <CloseIcon className={classes.navIcon} /> : <MenuIcon className={classes.navIcon} />}
                       </IconButton>
                   </Grid>
-                  <Grid className={classes.companyName}>
+                  <Grid className={classes.companyName} onClick={() => history.push('/')}>
                       {'Modern Magic'}
                   </Grid>
                   <Grid className={classes.rightMenu}>
-                      <IconButton>
-                          <AccountCircleIcon className={classes.navIcon} />
-                      </IconButton>
-                      <IconButton>
-                          <ShoppingCartIcon className={ classes.navIcon } />
-                      </IconButton>
+                    <IconButton className={classes.iconBtn}>
+                      <ShoppingCartIcon className={ classes.navIcon } />
+                    </IconButton>
+                    <IconButton className={classes.iconBtn}>
+                      <AccountCircleIcon className={classes.navIcon} />
+                    </IconButton>
                   </Grid>
               </Grid>
               {/* {open && (

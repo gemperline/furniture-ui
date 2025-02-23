@@ -533,6 +533,7 @@ declare module '@mui/material/styles' {
     darkGreenForIcon?: string;
     crimson?: string;
     navyBlueWithOpacity?: string;
+    mmOrange?: string;
   }
 
   interface SimplePaletteColorOptions extends PaletteColor, AMNFramework, AMNComponents {}
@@ -704,10 +705,10 @@ export let theme = createTheme({
     keys: ['xs', 'sm', 'md', 'lg', 'xl'],
     values: {
       xs: 0,
-      sm: 380,
-      md: 960,
-      lg: 1280,
-      xl: 1920,
+      sm: 600,
+      md: 900,
+      lg: 1200,
+      xl: 1536,
     },
   },
   palette: {
@@ -904,6 +905,7 @@ export let theme = createTheme({
       darkGreenForIcon: '#008000',
       crimson: '#990000',
       navyBlueWithOpacity: '#006FB91A',
+      mmOrange: '#fc9003',
     },
   },
   typography: {

@@ -14,7 +14,6 @@ const useStyles = makeStyles()(() => ({
   },
   paperContainer: {
     flex: 1, // Allows it to expand and fill remaining space
-    overflowY: 'auto', // Enables scrolling
   },
 }));
 
@@ -22,11 +21,13 @@ export const HomePage = ({ title }: { title: string }) => {
   const { classes } = useStyles();
 
   return (
-    <Paper id="home-page-paper" className={classes.root}>
+    // <Paper id="home-page-paper" className={classes.root}> {/* try removing Paper and wrapping with fragment <>...</>, then remove the HTML  */}
+    <>
       <Header />
       <div className={classes.paperContainer}>
         <DepartmentsSection />
       </div>
-    </Paper>
+    </>
+    // </Paper>
   );
 };

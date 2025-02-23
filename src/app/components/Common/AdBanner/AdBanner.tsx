@@ -3,9 +3,9 @@ import React from 'react';
 import { makeStyles } from 'tss-react/mui';
 
 const useStyles = makeStyles()({
-    root: {
+    banner: {
       width: '100%',
-      padding: '12px 6px',
+      padding: '6px',
       display: 'flex',
       alignItems: 'center',
       color: '#FFF',
@@ -17,7 +17,7 @@ const useStyles = makeStyles()({
 export const AdBanner = (props) => {
     const { classes } = useStyles();
     return (
-        <Grid className={classes.root}>
+        <Grid className={classes.banner}>
             {'This is the AdBanner'}
         </Grid>
     );

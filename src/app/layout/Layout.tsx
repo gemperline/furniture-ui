@@ -80,7 +80,6 @@ export const DisableAppScroll = () => {
 
 export const Layout = props => {
   const { classes, cx } = useStyles();
-    // useInjectReducer({ key: candidateDetailSliceKey, reducer: candidateDetailReducer });
 
   const { navigationExpanded } = useSelector(selectNavigationMenu);
   const { Component, ...rest } = props;
@@ -91,7 +90,7 @@ export const Layout = props => {
       render={matchProps => (
         <Grid container classes={{ root: classes.root, container: classes.container }} direction="row" spacing={0}>
           <Grid item className={cx(classes.layoutStatics, classes.sideNav)} style={{ height: NAV_HEIGHT }}>
-            <Navbar />
+            {/* <Navbar /> */}
           </Grid>
           <Grid
             item
